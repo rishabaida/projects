@@ -7,6 +7,10 @@
 # make checkClient       checks ListClient for memory errors
 # make checkLex          checks Lex for memory errors
 #------------------------------------------------------------------------------
+# Rishab Aida
+# raida
+# PA1
+
 
 Lex : Lex.o List.o
 	gcc -std=c11 -Wall -o Lex Lex.o List.o
