@@ -2,6 +2,9 @@
 // List.c
 // Implementation file for List ADT
 //-----------------------------------------------------------------------------
+// Rishab Aida
+// raida
+// PA1
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -76,7 +79,7 @@ List newList(void)
 // Frees all heap memory associated with List *pL, and sets *pL to NULL.
 void freeList(List* pL)
 {
-	if( pL!=NULL && *pL!=NULL)
+	if( pQ!=NULL && *pQ!=NULL)
 	{
 		while(!isEmpty(*pL))
 		{
@@ -216,7 +219,7 @@ void clear(List L)
 		exit(1);
 	}
 
-	while(!isEmpty(L))
+	while(!isEmpty(*L))
 	{
 		deleteFront(L);
 	}
@@ -483,32 +486,104 @@ void deleteFront(List L)
 		exit(1);
 	}
 
+	if( L->length == 1)
+	{
+		Node N = L->front;
+	    freeNode(&N);
+	    L->length--;
+	    L->index = -1;
+	    L->cursor = NULL;
+	    return;
+	}
+
+	if( L->cursor == L->front)
+	{
+		Node N = L->front;
+		L->front = L->front->next;
+		L->front->previous = NULL;
+		freeNode(&N);
+		L->length--;
+		L->cursor = NULL;
+		L->index = -1;
+		return;
+	}
+
+	if( L->cursor == L->back)
+	{
+		Node N = L->front;
+		L->front = L->front->next;
+		L->front->previous = NULL;
+		freeNode(&N);
+		L->length--;
+		L->index = L->length-1;
+		return;
+	}
+
+
+	Node N = L->front;
 	L->front = L->front->next;
-	freeNode(*L->front->previous);
 	L->front->previous = NULL;
+	freeNode(&N);
 	L->length--;
+	L->index--;
 }
 
 // deleteBack()
 // Delete the back element. Pre: length()>0
 void deleteBack(List L)
 {
-	if( L==NULL )
-	{
-		printf("List Error: calling deleteBack() on NULL List reference\n");
-	    exit(1);
-	}
+    if( L==NULL )
+    {
+            printf("List Error: calling deleteBack() on NULL List reference\n");
+        exit(1);
+    }
 
-	if( isEmpty(L) )
-	{
-		printf("List Error: calling deleteBack() on an empty List\n");
-		exit(1);
-	}
+    if( isEmpty(L) )
+    {
+            printf("List Error: calling deleteBack() on an empty List\n");
+            exit(1);
+    }
 
-	L->back = L->back->previous;
-	freeNode(*L->back->next);
-	L->back->next = NULL;
-	L->length--;
+    if( L->length == 1)
+    {
+            Node N = L->front;
+            freeNode(&N);
+            L->length--;
+            L->index = -1;
+            L->cursor = NULL;
+            return;
+    }
+
+    if( L->cursor == L->back)
+    {
+            Node N = L->back;
+            L->back = L->back->previous;
+            L->back->next = NULL;
+            freeNode(&N);
+            L->length--;
+            L->cursor = NULL;
+            L->index = -1;
+            return;
+    }
+
+    if( L->cursor == L->front )
+    {
+    	Node N = L->back;
+    	L->back = L->back->previous;
+    	L->back->next = NULL;
+    	freeNode(&N);
+    	L->length--;
+    	L->index = 0;
+    	return;
+    }
+
+    Node N = L->back;
+    L->back = L->back->previous;
+    L->back->next = NULL;
+    freeNode(&N);
+    L->length--;
+    L->index--;
+
 }
 
 // delete()
@@ -519,7 +594,7 @@ void delete(List L)
 	if( L==NULL )
 	{
 		printf("List Error: calling get() on NULL List reference\n");
-	    exit(1);
+		exit(1);
 	}
 
 	if( isEmpty(L) )
@@ -534,12 +609,46 @@ void delete(List L)
 		exit(1);
 	}
 
-	L->cursor->previous->next = L->cursor->next;
-	L->cursor->next->previous = L->cursor->previous;
-	freeNode(*L->cursor);
-	L->cursor = NULL;
-	L->index = -1;
-	L->length--;
+	if( L->length == 1)
+	{
+		Node N = L->front;
+		freeNode(&N);
+		L->length--;
+		L->index = -1;
+		L->cursor = NULL;
+		return;
+	}
+
+	if( L->cursor == L->front)
+	{
+		Node N = L->front;
+		L->front = L->front->next;
+		L->front->previous = NULL;
+		freeNode(&N);
+		L->length--;
+		L->cursor = NULL;
+		L->index = -1;
+		return;
+	}
+
+	 if( L->cursor == L->back)
+	 {
+		 Node N = L->back;
+		 L->back = L->back->previous;
+		 L->back->next = NULL;
+		 freeNode(&N);
+		 L->length--;
+		 L->cursor = NULL;
+		 L->index = -1;
+		 return;
+	 }
+
+	 L->cursor->previous->next = L->cursor->next;
+	 L->cursor->next->previous = L->cursor->previous;
+	 freeNode(&(L->cursor));
+	 L->cursor = NULL;
+	 L->index = -1;
+	 L->length--;
 }
 
 // isEmpty()
@@ -563,20 +672,16 @@ int isEmpty(List L)
 // with front on left
 void printList(FILE* out, List L)
 {
-
 	if( L==NULL )
 	{
-	     printf("List Error: calling printList() on NULL List reference\n");
-	     exit(1);
+		printf("List Error: calling printList() on NULL List reference\n");
+		exit(1);
 	}
 
-
-	out = fopen(out, "w");
-
 	if(out == NULL)
-		{
-			printf("Unable to open file %s for writing/n", out);
-		}
+	{
+		printf("Unable to open file for writing/n");
+	}
 
 	Node N = NULL;
 
@@ -584,8 +689,6 @@ void printList(FILE* out, List L)
 	{
 		fprintf(out, "%d ", N->data);
 	}
-	fprintf(out, "\n");
-	fclose(out);
 }
 
 // copyList()
@@ -608,9 +711,6 @@ List copyList(List L)
 	for(N = L->front; N != NULL; N = N->next)
 	{
 		append(copy, N->data);
-		copy->length++;
 	}
 	return copy;
 }
-
-#endif
