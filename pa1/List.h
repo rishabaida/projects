@@ -2,6 +2,9 @@
 // List.h
 // Header file for List ADT
 //-----------------------------------------------------------------------------
+// Rishab Aida
+// raida
+// PA1
 
 #ifndef _LIST_H_INCLUDE_
 #define _LIST_H_INCLUDE_
