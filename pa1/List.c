@@ -76,7 +76,7 @@ List newList(void)
 // Frees all heap memory associated with List *pL, and sets *pL to NULL.
 void freeList(List* pL)
 {
-	if( pQ!=NULL && *pQ!=NULL)
+	if( pL!=NULL && *pL!=NULL)
 	{
 		while(!isEmpty(*pL))
 		{
@@ -216,9 +216,9 @@ void clear(List L)
 		exit(1);
 	}
 
-	while(!isEmpty(*L))
+	while(!isEmpty(L))
 	{
-		deleteFront(*L);
+		deleteFront(L);
 	}
 
 	L->front = NULL;
@@ -318,7 +318,7 @@ void moveNext(List L)
 	if( L->cursor == L->back)
 	{
 		L->cursor = NULL;
-		L->index++;
+		L->index = -1;
 		return;
 	}
 	L->cursor = L->cursor->next;
@@ -350,6 +350,11 @@ void prepend(List L, int data)
 	N->next = L->front;
 	L->front = N;
 	L->length++;
+
+	if(L->index >= 0)
+	{
+		L->index++;
+	}
 }
 
 // append()
@@ -409,6 +414,7 @@ void insertBefore(List L, int data)
 		L->cursor->previous = N;
 		L->front = N;
 		L->length++;
+		L->index++;
 		return;
 	}
 
@@ -416,6 +422,7 @@ void insertBefore(List L, int data)
 	N->previous = L->cursor->previous;
 	L->cursor->previous = N;
 	N->previous->next = N;
+	L->index++;
 	L->length++;
 }
 
