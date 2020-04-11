@@ -219,7 +219,7 @@ void clear(List L)
 		exit(1);
 	}
 
-	while(!isEmpty(*L))
+	while(!isEmpty(L))
 	{
 		deleteFront(L);
 	}
