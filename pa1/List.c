@@ -79,7 +79,7 @@ List newList(void)
 // Frees all heap memory associated with List *pL, and sets *pL to NULL.
 void freeList(List* pL)
 {
-	if( pQ!=NULL && *pQ!=NULL)
+	if( pL!=NULL && *pL!=NULL)
 	{
 		while(!isEmpty(*pL))
 		{
