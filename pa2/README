@@ -1,0 +1,21 @@
+// Rishab Aida
+// raida
+// PA2
+
+Table of Contents
+
+Arithmetic.c: Top level client for BigInteger ADT
+
+BigInteger.c: Implementation file for BigInteger ADT
+
+BigInteger.h: Header file for BigInteger ADT
+
+BigIntegerTest.c: Testing file for BigInteger ADT
+
+List.h: Header file for List ADT
+
+List.c: Implementation file for List ADT
+
+ListTest.c: Client file provided for us
+
+Makefile: A simple Makefile for PA2
