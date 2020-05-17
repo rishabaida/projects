@@ -1,0 +1,15 @@
+// Rishab Aida
+// raida
+// PA5
+
+Table of Contents
+
+Dictionary.h: Header file for Dictionary ADT
+
+Dictionary.c: Implementation file for Dictionary ADT
+
+DictionaryTest.c: Test file for Dictionary ADT
+
+Lex.c: File that alphabetically sorts input file
+
+Makefile: A simple Makefile for PA
