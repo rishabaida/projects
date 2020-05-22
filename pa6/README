@@ -1,0 +1,15 @@
+// Rishab Aida
+// raida
+// PA6
+
+Table of Contents
+
+Dictionary.h: Header file for Dictionary ADT
+
+Dictionary.c: Implementation file for Dictionary ADT
+
+DictionaryTest.c: Test file for Dictionary ADT
+
+Order.c: File that prints out Dictionary in various orders
+
+Makefile: A simple Makefile for PA6
