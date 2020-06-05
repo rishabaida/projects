@@ -5,6 +5,10 @@
 // to be an int in the range 0 (at front) to length of List (at back).
 // An empty list consists of the vertical cursor only, with no elements.
 //-----------------------------------------------------------------------------
+// Rishab Aida
+// raida
+// PA7
+
 #include<iostream>
 #include<string>
 
