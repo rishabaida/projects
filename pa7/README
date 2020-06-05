@@ -1,0 +1,15 @@
+// Rishab Aida
+// raida
+// PA7
+
+Table of Contents
+
+Makefile: A simple Makefile for PA7
+
+List.h: Header file for List ADT
+
+List.cpp: Implementation file for List ADT
+
+ListTest.cpp: Testing file for List ADT
+
+Shuffle.cpp: Top level client for List ADT, shuffles set of inputted cards
