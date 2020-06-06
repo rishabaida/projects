@@ -15,7 +15,7 @@ using namespace std;
 int main()
 {
 	int i;
-   List A, B, C, D, E;
+   	List A, B, C, D, E;
 
    for(i=1; i<=10; i++){
       A.insertAfter(i);
