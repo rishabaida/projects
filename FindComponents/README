@@ -1,0 +1,23 @@
+// Rishab Aida
+// raida
+// PA4
+
+Table of Contents
+
+List.c: Implementation file for List ADT
+
+List.h: Header file for List ADT
+
+Graph.c: Implementation file for Graph ADT
+
+Graph.h: Header file for Graph ADT
+
+GraphTest.c: Testing file for Graph ADT
+
+FindComponents.c: Top level client for Graph ADT
+
+Makefile: A simple Makefile for PA4
+
+Program Structure Notes
+
+For PA4, I decided to implement the reccomended choice of having time be a local variable in DFS(), and dimply passing its address to visit() when called. I also implemented a field in my Graph known as components, which tracked whenever the transposed graph called visit() from DFS() and hence giving me the number of strong components there were in the graph. getComponents() simply returned this value.

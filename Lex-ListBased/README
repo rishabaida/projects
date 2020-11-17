@@ -1,0 +1,15 @@
+// Rishab Aida
+// raida
+// PA1
+
+Table of Contents
+
+List.h: Header file for List ADT
+
+List.c: Implementation file for List ADT
+
+ListClient.c: Client file provided for us
+
+Lex.c: File that alphabetically sorts input file
+
+Makefile: A simple Makefile for PA
